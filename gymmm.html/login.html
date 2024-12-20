@@ -1,0 +1,184 @@
+<!-- <script>
+  function validateForm() {
+
+    // Clear previous error messages
+    document.getElementById("nameError").textContent = "";
+    document.getElementById("emailError").textContent = "";
+    document.getElementById("passwordError").textContent = "";
+    
+    let isValid =true;
+
+
+    // Name validation
+    const name = document.getElementById("name").value.trim();
+    if (name === "") {
+      document.getElementById("nameError").textContent = "Name is required.";
+      isValid = false;
+    }
+
+
+    // Email validation
+    const email = document.getElementById("email").value.trim();
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (email === "") {
+      document.getElementById("emailError").textContent = "Email is required.";
+      isValid = false;
+    } else if (!emailPattern.test(email)) {
+      document.getElementById("emailError").textContent = "Invalid email format.";
+      isValid = false;
+    }
+
+    
+    const password = document.getElementById("password").value.trim();
+      if (password === "") {
+        document.getElementById("passwordError").textContent = "Password is required.";
+        isValid = false;
+      } else if (password.length < 6) {
+        document.getElementById("passwordError").textContent = "Password must be at least 6 characters long.";
+        isValid = false;
+      }
+
+      
+      // If all validations pass
+      if (isValid) {
+        alert("Login successful");
+        window.location.href="index.html";
+      }
+    }
+  </script> -->
+
+
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            display: none;
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+                <div id="usernameError" class="error">Please enter a valid username.</div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <div id="passwordError" class="error">Please enter a valid password.</div>
+            </div>
+            <input type="submit" value="Login">
+        </form>
+        <div class="login-footer">
+            <p>Not registered? <a href="signin.html">Sign up</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Predefined user credentials (for demo purposes)
+        const validUsername = "user123";
+        const validPassword = "password123";
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            let isValid = true;
+
+            // Reset error messages
+            document.getElementById('usernameError').style.display = 'none';
+            document.getElementById('passwordError').style.display = 'none';
+
+            // Validate username and password
+            if (username !== validUsername) {
+                document.getElementById('usernameError').style.display = 'block';
+                isValid = false;
+            }
+
+            if (password !== validPassword) {
+                document.getElementById('passwordError').style.display = 'block';
+                isValid = false;
+            }
+
+            // If login is successful
+            if (isValid) {
+                alert("Login successful!");
+                // Redirect or load the next page
+                window.location.href = "dashboard.html"; // Replace with your dashboard URL
+            }
+        });
+    </script>
+
+</body>
+</html>
